@@ -2,6 +2,7 @@ package com.solinvictus.DemoSpringMVC.controller;
 
 import java.util.Map;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController implements IController{
+	EntityManager em;
 	
 	@RequestMapping(value= "/login#ALARM" , method= RequestMethod.POST)
 	public ModelAndView setAnAlarm(@RequestParam Map<String,String> allParams) {
 		ModelAndView mv=new ModelAndView("welcome#ALARM");
+		
 		
 		return mv;
 	}

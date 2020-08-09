@@ -311,6 +311,15 @@
 		</div>
 	</div>
 	<div id="NOTES" class="container-fluid bg-warning d-flex"
-		style="height: 100vh"></div>
+		style="height: 100vh">
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
 </body>
 </html>
