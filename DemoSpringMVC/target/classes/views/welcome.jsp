@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +16,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <title>WELCOME</title>
 </head>
-<script src="${pageContext.request.contextPath}/resources/project.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/style.css" />
+<script src="project.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
 
 <body class="body" style="background-color: #EEEEEE">
 	<nav class="nav navbar navbar-expand-md bg-dark navbar-dark fixed-top"
@@ -268,7 +268,7 @@
 						<form method="POST">
 							<div class="form-group form-inline m-3">
 								<div class="">
-									<button class="btn rounded-o" width=20px height=20px>
+									<button class="btn rounded-o" style="width: 20px; height: 20px">
 										<img class="rounded-o"
 											src="https://img.icons8.com/cute-clipart/64/000000/plus-math.png"
 											width=30px height=30px />
@@ -311,15 +311,6 @@
 		</div>
 	</div>
 	<div id="NOTES" class="container-fluid bg-warning d-flex"
-		style="height: 100vh">
-	
-	
-	
-	
-	
-	
-	
-	
-	</div>
+		style="height: 100vh"></div>
 </body>
 </html>
