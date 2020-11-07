@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,16 +16,14 @@ public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	private User user;
+	
 	private Date creationDate;
 	private String noteContent;
 	private Boolean reminder;
 	private Date reminderDate;
 
 	@Autowired
-	public Note(Long noteId, User user, Date creationDate, String noteContent, Boolean reminder, Date reminderDate) {
-		this.user = user;
+	public Note(Long noteId, Date creationDate, String noteContent, Boolean reminder, Date reminderDate) {
 		this.creationDate = creationDate;
 		this.noteContent = noteContent;
 		this.reminder = reminder;
@@ -32,14 +32,6 @@ public class Note {
 
 	public Long getId() {
 		return id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Date getCreationDate() {

@@ -23,7 +23,9 @@ public class User {
 	private String email;
 	private Date dob;
 
-	@Autowired
+	public User() {
+	}
+	
 	public User(String username, String password, String name, String email, Date dob) {
 		this.username = username;
 		this.password = password;
