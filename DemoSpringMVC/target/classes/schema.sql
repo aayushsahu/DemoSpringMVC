@@ -1,1 +1,0 @@
-CREATE TABLE XYZ (XYZCOLUMN varchar(1));
