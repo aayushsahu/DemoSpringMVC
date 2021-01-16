@@ -17,6 +17,8 @@ public class Note {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@ManyToOne
+	private User user;	
 	private Date creationDate;
 	private String noteContent;
 	private Boolean reminder;
@@ -32,6 +34,14 @@ public class Note {
 
 	public Long getId() {
 		return id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUserId(User user) {
+		this.user = user;
 	}
 
 	public Date getCreationDate() {

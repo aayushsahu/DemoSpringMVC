@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,6 +16,8 @@ public class CalenderEvent {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@ManyToOne
+	private User user;
 	private Date eventDateAndTime;
 	private String eventDescription;
 	private String noteForEvent;
@@ -26,6 +29,18 @@ public class CalenderEvent {
 		this.noteForEvent = noteForEvent;
 	}
 
+	public Long getId() {
+		return id;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public Date getEventDateAndTime() {
 		return eventDateAndTime;
 	}

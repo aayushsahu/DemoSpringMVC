@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,13 +16,18 @@ public class Todo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+	
+	@ManyToOne
+	private User user;
 	private Date dateofCreation;
 	private String task;
 	private boolean isDone;
+	
+	public Todo() {}
 
 	@Autowired
-	public Todo(Long id, Date dateofCreation, String task, boolean isDone) {
+	public Todo(User user, Date dateofCreation, String task, boolean isDone) {
+		this.user = user;
 		this.dateofCreation = dateofCreation;
 		this.task = task;
 		this.isDone = isDone;
@@ -29,6 +35,14 @@ public class Todo {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Date getDateofCreation() {

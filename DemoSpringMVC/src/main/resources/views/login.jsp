@@ -47,7 +47,7 @@ body {
 		<img id="doctor" src="img/doctor.svg" />
 	</div>
 	<div id="form">
-		<form method="post" action="">
+		<form method="post" action="/login">
 			<input type="text" class="form-control form-control-lg text-white"
 				name="user" placeholder="E-mail Address" /> <br> <input
 				type="password" class="form-control form-control-lg text-white"

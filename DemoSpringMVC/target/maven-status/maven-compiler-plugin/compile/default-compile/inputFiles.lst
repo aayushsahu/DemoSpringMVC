@@ -2,6 +2,7 @@ C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvic
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\CalenderEventDAO.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\Entity\CalenderEvent.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\TodoDAO.java
+C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\Entity\EntityInterface.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\Service\RegisterUserService.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\AlarmDAO.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\Repos\UserRepository.java
@@ -21,6 +22,7 @@ C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvic
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\NoteDAO.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\controller\LoginController.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\config\MyFrontController.java
+C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\DAOInterface.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\DAO\ReminderDAO.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\Entity\Alarm.java
 C:\Users\SOL INVICTUS\git\DemoSpringMVC\DemoSpringMVC\src\main\java\com\solinvictus\DemoSpringMVC\controller\IController.java

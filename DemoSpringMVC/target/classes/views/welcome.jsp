@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
@@ -28,7 +29,7 @@
 				<li class="nav-item"><a href="#NOW" class="nav-link">NOW</a></li>
 				<li class="nav-item"><a href="#ALARM" class="nav-link">ALARM</a></li>
 				<li class="nav-item"><a href="#REMINDER" class="nav-link">REMINDER</a></li>
-				<li class="nav-item"><a href="#TODO" class="nav-link">TO-DO</a></li>
+				<li class="nav-item"><a href="#TODO" class="nav-link">TODO</a></li>
 				<li class="nav-item"><a href="#NOTES" class="nav-link">NOTES</a></li>
 			</ul>
 			<ul class="navbar-nav">
@@ -36,10 +37,10 @@
 					class="nav-link dropdown-toggle" id="settings-dropdown"
 					data-toggle="dropdown" aria-expanded="true">SETTINGS</a>
 					<div class="dropdown-menu" aria-labelledby="settings-dropdown">
-						<a href="#" class="dropdown-item">HI </a> <a href="#PRIVACY"
-							class="dropdown-item">Privacy Settings</a> <a href="#TIMEZONE"
-							class="dropdown-item"> TIMEZONE</a> <a href="#LOGOUT"
-							class="dropdown-item">LOGOUT</a>
+						<a href="#" class="dropdown-item"> ${username}</a> <a
+							href="#PRIVACY" class="dropdown-item">Privacy Settings</a> <a
+							href="#TIMEZONE" class="dropdown-item"> TIMEZONE</a> <a
+							href="#LOGOUT" class="dropdown-item">LOGOUT</a>
 					</div></li>
 			</ul>
 		</div>
@@ -250,14 +251,11 @@
 				<div class="card" style="height: 60vh; width: 46.5vw">
 
 
-					<div class="form-group form-inline m-3 rounded bg-danger p-1">
-						<label class="form-check-label text-light ">TODO ITEM 1</label> <input
-							type="checkbox" class="form-control form-check-input ml-auto"
-							style="width: 2vw; height: 2vw">
-					</div>
-					<div class="form-group form-inline m-3 rounded bg-danger p-1 ">
-						<label class="form-check-label text-light ">TODO ITEM 1</label> <input
-							type="checkbox" class="form-control form-check-input ml-auto"
+					<div class="form-group form-inline m-3 rounded bg-danger p-1"
+						th:each="todo :  ${allTodoItemsForUser}">
+						<label class="form-check-label text-light" th:text="${todo.task}">
+							todo_task</label> <input type="checkbox"
+							class="form-control form-check-input ml-auto"
 							style="width: 2vw; height: 2vw">
 					</div>
 				</div>
@@ -265,18 +263,21 @@
 			<div class="col my-auto" style="width: 50vw; height: 40vh">
 				<div class="card" style="height: 40vh; width: 46.5vw">
 					<div class="form">
-						<form method="POST">
+						<form method="POST" action="home#TODO">
 							<div class="form-group form-inline m-3">
 								<div class="">
-									<button class="btn rounded-o" style="width: 20px; height: 20px">
+									<button type="submit" class="btn rounded-o"
+										style="width: 20px; height: 20px">
 										<img class="rounded-o"
 											src="https://img.icons8.com/cute-clipart/64/000000/plus-math.png"
 											width=30px height=30px />
 									</button>
+									<input type="text" name="todo_input"
+										class="form-control form-input bg-danger text-light border-none"
+										placeholder="Add a new task here...">
+
 								</div>
-								<input type="text"
-									class="form-control form-input bg-danger text-light border-none"
-									placeholder="Add a new task here...">
+
 							</div>
 						</form>
 					</div>
