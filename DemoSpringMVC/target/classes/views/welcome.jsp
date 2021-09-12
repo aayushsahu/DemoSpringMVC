@@ -57,7 +57,7 @@
 				<div class="item text-blink">
 					<span id="mytime" class="font-weight-bold display-3 bg-warning p-1"></span>
 				</div>
-			</div>
+				</div>
 			<div class="col">
 				<div class="item"></div>
 			</div>
@@ -263,7 +263,7 @@
 			<div class="col my-auto" style="width: 50vw; height: 40vh">
 				<div class="card" style="height: 40vh; width: 46.5vw">
 					<div class="form">
-						<form method="POST" action="home#TODO">
+						<form method="POST" action="home">
 							<div class="form-group form-inline m-3">
 								<div class="">
 									<button type="submit" class="btn rounded-o"

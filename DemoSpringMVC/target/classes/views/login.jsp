@@ -42,9 +42,9 @@ body {
 	height: 200px;
 }
 </style>
-<BODY background="img/sides.svg" style="height: 100vh">
+<BODY background="static/img/sides.svg" style="height: 100vh">
 	<div>
-		<img id="doctor" src="img/doctor.svg" />
+		<img id="doctor" src="static/img/doctor.svg" />
 	</div>
 	<div id="form">
 		<form method="post" action="/login">

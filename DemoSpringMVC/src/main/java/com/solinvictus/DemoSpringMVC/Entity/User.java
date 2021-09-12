@@ -2,6 +2,7 @@ package com.solinvictus.DemoSpringMVC.Entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@Column(name = "id")
 	private Long id;
 
 	private String username;
@@ -36,6 +38,13 @@ public class User {
 		this.dob = dob;
 	}
 
+	public User(String username, String password, String name, String email) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.dob = new Date(2021, 07, 29, 01, 10, 0);
+	}
 	public Long getId() {
 		return id;
 	}
@@ -79,5 +88,5 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-
+	
 }

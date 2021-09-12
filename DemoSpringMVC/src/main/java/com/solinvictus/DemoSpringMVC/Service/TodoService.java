@@ -19,18 +19,16 @@ import net.bytebuddy.asm.Advice.This;
 @Service
 public class TodoService {
 	private final TodoRepository todoRepository;
-	private final User user;
 	
 	public TodoService(TodoRepository todoRepository, User user) {
 		this.todoRepository = todoRepository;
-		this.user = user;
 	}
 	
 	public void createTodoItem(Todo todoItem){
 		todoRepository.save(todoItem);
 	}
 	
-	public List<Todo> fetchAllTodoItemForUser(){
+	public List<Todo> fetchAllTodoItemForUser(User user){
 		Iterable<Todo> it = todoRepository.findAll();
 		List<Todo> allTodoItems = new ArrayList<>();
 		List<Todo> allTodoItemForUser = new ArrayList<>();
@@ -41,8 +39,8 @@ public class TodoService {
 		
 		for (Todo todoItem : allTodoItems) {
 			System.out.println(todoItem.getUser().getId());
-			System.out.println(this.user.getId());
-			if ( todoItem.getUser().getId() == this.user.getId() )
+			System.out.println(user.getId());
+			if ( todoItem.getUser().getId() ==user.getId())
 				allTodoItemForUser.add(todoItem); 
 		}
 		return allTodoItemForUser;

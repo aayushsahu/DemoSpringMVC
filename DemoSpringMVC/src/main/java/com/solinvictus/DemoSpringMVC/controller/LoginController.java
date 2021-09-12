@@ -6,7 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,10 +28,10 @@ import com.solinvictus.DemoSpringMVC.Service.UserService;
 @RestController
 public class LoginController implements IController {
 	
-	
 	private String username;
 	private String password;
-	private User user;
+	
+	private static User user;
 
 	private final UserService userService;
 	private final TodoService todoService;
@@ -37,12 +41,19 @@ public class LoginController implements IController {
 		this.todoService = todoService;
 	}
 	
+	@Autowired
+	public void setUser(User user) {
+		LoginController.user = user;
+	}
+	
+	
 	//LOGIN MAPPING
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin() {
 		ModelAndView mv = new ModelAndView("login");
 
 		// Populating data into DB
+		/*
 		User userA = new User("a", "a", "A_NAME", "A_NAME@EMAIL.COM", new Date());
 		User userB = new User("b", "b", "B_NAME", "B_NAME@EMAIL.COM", new Date());
 		User userC = new User("c", "c", "C_NAME", "C_NAME@EMAIL.COM", new Date());
@@ -53,43 +64,65 @@ public class LoginController implements IController {
 		userService.registerUser(userC);
 		userService.registerUser(userD);
 		userService.registerUser(userE);
-
+		 */
+		
 		return mv;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView checkLoginCredentials(HttpServletRequest request , @RequestParam Map<String, String> allParams) {
-		this.username = allParams.get("user");
-		this.password = allParams.get("password");
-
-		System.out.println("Parameters are " + allParams.entrySet());
-		
-		if (userService.validateUser(username, password)) {
-			this.user= userService.getUser();
-			ModelAndView mv = new ModelAndView("redirect:/home");
-			System.out.println("Validation passed");
-			request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.MOVED_PERMANENTLY);
-			System.out.println("++++++" + View.RESPONSE_STATUS_ATTRIBUTE+ "   "+   HttpStatus.MOVED_PERMANENTLY);
-			return mv;
-			
-			//this.showHome();
-		} else {
-			System.out.println("Validation failed");
-			//this.showLogin();
-			//request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.MOVED_PERMANENTLY);
-			return new ModelAndView("redirect:/login");
-		}
-		
-	}
+	
+//	@RequestMapping(value = "/login", method = RequestMethod.POST) 
+//	public ModelAndView checkLoginCredentials(HttpServletRequest request , @RequestParam Map<String, String> allParams) {
+//		String username = allParams.get("user");
+//		String password = allParams.get("password");
+//
+//		System.out.println("Parameters are " + allParams.entrySet());
+//		
+//		this.username = Jsoup.clean(username, Whitelist.basic());
+//		this.password = Jsoup.clean(password, Whitelist.basic());
+//		if (userService.validateUser(this.username, this.password)) {
+//			this.user= userService.getUser();
+//			
+//			/**
+//			this.user = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+//			
+//			if(this.user==null) {
+//				this.user=userService.getUser();
+//				request.getSession().setAttribute("LOGGEDIN_USER", this.user);
+//			}
+//			**/
+//			
+//			ModelAndView mv = new ModelAndView("redirect:/home");
+//			System.out.println("Validation passed");
+//			request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.MOVED_PERMANENTLY);
+//			System.out.println("++++++" + View.RESPONSE_STATUS_ATTRIBUTE+ "   "+   HttpStatus.MOVED_PERMANENTLY);
+//			return mv;
+//			
+//			//this.showHome();
+//		} else {
+//			System.out.println("Validation failed");
+//			//this.showLogin();
+//			//request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.MOVED_PERMANENTLY);
+//			return new ModelAndView("redirect:/login");
+//		}
+//		
+//	}
+	
 	
 	//HOME MAPPING
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView showHome() {
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("welcome");
-		mv.addObject("username", this.username);
-		List<Todo> listOfTodo = todoService.fetchAllTodoItemForUser();
+		mv.addObject("username", user.getUsername());
+		
+		if(user == null)
+			return mv;
+		
+		List<Todo> listOfTodo = todoService.fetchAllTodoItemForUser(user);
+		
 		System.out.println(listOfTodo);
+		
 		if (listOfTodo != null)
 			mv.addObject("allTodoItemsForUser", listOfTodo);
 		return mv;
@@ -98,13 +131,22 @@ public class LoginController implements IController {
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public ModelAndView addTaskToDo(HttpServletRequest request, @RequestParam Map<String, String> allParams) {
 		ModelAndView mv = new ModelAndView("redirect:/home");
-
-		System.out.println("Task added");
-		// call DB insert service
-		Todo todoTask = new Todo(this.user, new Date(), allParams.get("todo_input"), false);
-		todoService.createTodoItem(todoTask);
+		
+		/*if(!allParams.get("").equals("")) {
+			Todo todoTask = new Todo(this.user, new Date(), allParams.get("todo_input"), false);
+			todoService.createTodoItem(todoTask);
+			System.out.println("Task added");
+		}*/
+		
+		if(!allParams.get("todo_input").equals("")) {
+			Todo todoTask = new Todo(user, new Date(), allParams.get("todo_input"), false);
+			todoService.createTodoItem(todoTask);
+			System.out.println("Task added");
+		}
+		
 		request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.MOVED_PERMANENTLY);
 		System.out.println("Parameters are " + allParams.entrySet());
+		
 		return mv;
 	}
 }
