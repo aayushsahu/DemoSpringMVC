@@ -87,8 +87,8 @@ public class LoginController implements IController {
 	public ModelAndView showHome() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("welcome");
-		mv.addObject("username", this.username);
-		List<Todo> listOfTodo = todoService.fetchAllTodoItemForUser();
+		mv.addObject("username", this.user.getUsername());
+		List<Todo> listOfTodo = todoService.fetchAllTodoItemForUser(this.user);
 		System.out.println(listOfTodo);
 		if (listOfTodo != null)
 			mv.addObject("allTodoItemsForUser", listOfTodo);

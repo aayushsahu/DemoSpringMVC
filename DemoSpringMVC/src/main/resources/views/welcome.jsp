@@ -37,8 +37,8 @@
 					class="nav-link dropdown-toggle" id="settings-dropdown"
 					data-toggle="dropdown" aria-expanded="true">SETTINGS</a>
 					<div class="dropdown-menu" aria-labelledby="settings-dropdown">
-						<a href="#" class="dropdown-item"> ${username}</a> <a
-							href="#PRIVACY" class="dropdown-item">Privacy Settings</a> <a
+						<a href="#" class="dropdown-item" th:text="${username}"> </a> <a
+							href="#PRIVACY" class="dropdown-item">PRIVACY</a> <a
 							href="#TIMEZONE" class="dropdown-item"> TIMEZONE</a> <a
 							href="#LOGOUT" class="dropdown-item">LOGOUT</a>
 					</div></li>
